@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - John Roy</title>
+
+    <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f4f4f9, #e8f0ff);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           COLORFUL GRADIENT TEXT
+        ========================= */
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ff0080,
+                #7928ca,
+                #007bff,
+                #00c6ff,
+                #00d4a8
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            font-size: 1.3rem;
+
+            background: linear-gradient(
+                90deg,
+                #ff0080,
+                #007bff,
+                #00c6ff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 0, 128, 0.9),
+                    rgba(121, 40, 202, 0.9),
+                    rgba(0, 123, 255, 0.9),
+                    rgba(0, 198, 255, 0.9)
+                );
+
+            color: white;
+            text-align: center;
+            padding: 90px 20px 110px;
+        }
+
+        /* =========================
+           PROFILE PICTURE
+        ========================= */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 190px;
+            height: 190px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 7px solid white;
+
+            box-shadow:
+                0 0 0 5px #ff0080,
+                0 0 0 10px #7928ca,
+                0 0 35px rgba(255, 255, 255, 0.8);
+
+            transition: 0.4s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.08) rotate(2deg);
+
+            box-shadow:
+                0 0 0 5px #00c6ff,
+                0 0 0 10px #007bff,
+                0 0 45px rgba(255, 255, 255, 0.9);
+        }
+
+        /* =========================
+           HERO TEXT
+        ========================= */
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+
+            text-shadow:
+                2px 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .hero .course {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .hero .school {
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+        .btn {
+            display: inline-block;
+
+            background: #ffffff;
+            color: #007bff;
+
+            padding: 12px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            margin: 5px;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: #00c6ff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .github-btn {
+            background: #24292e;
+            color: white;
+        }
+
+        .github-btn:hover {
+            background: #000000;
+            color: #00c6ff;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+        section {
+            padding: 70px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+        .about {
+            text-align: center;
+        }
+
+        .about > p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================= */
+        .education {
+            margin-top: 25px;
+            padding: 25px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+
+            border-left: 5px solid #007bff;
+        }
+
+        .education h3 {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .education p {
+            color: #555;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+        .project-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #ffffff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+
+            border-top: 5px solid #007bff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 123, 255, 0.2);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+
+            background:
+                linear-gradient(90deg, #ff0080, #007bff);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact strong {
+            color: #007bff;
+        }
+
+        /* =========================
+           GITHUB LINK
+        ========================= */
+        .github-link {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 12px 22px;
+
+            background:
+                linear-gradient(90deg, #24292e, #444);
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .github-link:hover {
+            transform: scale(1.05);
+
+            background:
+                linear-gradient(90deg, #007bff, #00c6ff);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            text-align: center;
+
+            padding: 25px;
+
+            background: #2c3e50;
+
+            color: white;
+
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            background:
+                linear-gradient(90deg, #ff0080, #00c6ff);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 70px 20px 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+    <nav>
+
+        <div class="logo">
+            MyPortfolio
+        </div>
+
+        <ul>
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <header class="hero">
+
+        <!-- PROFILE PICTURE -->
+        <div class="profile-container">
+
+            <img
+                src="anime.jpg"
+                alt="John Roy Profile Picture"
+                class="profile-pic"
+            >
+
+        </div>
+
+
+        <h1>
+            Tinola sa Papaya, Mango!
+        </h1>
+
+        <p>
+            Web Developer & Designer
+        </p>
+
+        <p class="course">
+            Bachelor of Science in Information Technology
+        </p>
+
+        <p class="school">
+            University of Mindanao Digos College
+        </p>
+
+
+        <a href="#projects" class="btn">
+            View My Work
+        </a>
+
+
+        <a
+            href="https://github.com/JRoy03/PortflioNiRhoi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn github-btn"
+        >
+            🐙 GitHub
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section id="about" class="about">
+
+        <h2 class="gradient-text">
+            About Me
+        </h2>
+
+        <p>
+            I am a passionate beginner web developer who loves building
+            clean, responsive, and user-friendly websites. I enjoy learning
+            new technologies and turning ideas into reality through code.
+        </p>
+
+
+        <div class="education">
+
+            <h3 class="gradient-text">
+                Bachelor of Science in Information Technology
+            </h3>
+
+            <p>
+                University of Mindanao Digos College
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+    <section id="projects">
+
+        <h2 class="gradient-text">
+            My Projects
+        </h2>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+
+                <h3>
+                    Project One
+                </h3>
+
+                <p>
+                    A brief description of your first project goes here.
+                    Built using HTML and CSS.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Project Two
+                </h3>
+
+                <p>
+                    A brief description of your second project goes here.
+                    Showcasing your coding skills.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>
+                    Project Three
+                </h3>
+
+                <p>
+                    A brief description of your third project goes here.
+                    Highlighting a unique feature.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section id="contact" class="contact">
+
+        <h2 class="gradient-text">
+            Get In Touch
+        </h2>
+
+        <p>
+            Feel free to reach out for collaborations
+            or just a friendly hello!
+        </p>
+
+        <p>
+            Email:
+            <strong>
+                jdaulong03@gmail.com
+            </strong>
+        </p>
+
+
+        <a
+            href="https://github.com/JRoy03/PortflioNiRhoi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-link"
+        >
+            🐙 Visit My GitHub
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            &copy; 2026
+            <span>John Roy</span>.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
